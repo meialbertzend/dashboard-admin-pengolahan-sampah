@@ -64,7 +64,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link" href="<?php echo site_url('Prodi2') ?>">
+        <a class="nav-link" href="<?php echo site_url('Sampah_terjual') ?>">
             <i class="fas fa-fw fa-shopping-cart"></i>
             <span>Sampah Terjual</span></a>
     </li>
