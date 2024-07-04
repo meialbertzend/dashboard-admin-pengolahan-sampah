@@ -40,7 +40,7 @@
 
             <div class="form-group">
                 <label for="berat">Berat (kg) :</label>
-                <input type="text" name="berat" class="form-control" id="berat" value="<?= $sampah_masuk['berat']; ?>" required>
+                <input type="number" name="berat" class="form-control" id="berat" value="<?= $sampah_masuk['berat']; ?>" required>
                 <small class="form-text text-danger"><?= form_error('berat'); ?></small>
             </div>
 
