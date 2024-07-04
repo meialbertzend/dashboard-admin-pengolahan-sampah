@@ -28,13 +28,13 @@
 
             <div class="form-group">
                 <label for="berat">Berat (kg) :</label>
-                <input type="text" name="berat" class="form-control" id="berat" required>
+                <input type="number" name="berat" class="form-control" id="berat" required>
                 <small class="form-text text-danger"><?= form_error('berat'); ?></small>
             </div>
 
             <div class="form-group">
                 <label for="harga">Harga :</label>
-                <input type="text" name="harga" class="form-control" id="harga" required>
+                <input type="number" name="harga" class="form-control" id="harga" required>
                 <small class="form-text text-danger"><?= form_error('harga'); ?></small>
             </div>
 

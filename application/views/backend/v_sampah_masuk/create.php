@@ -9,17 +9,6 @@
     <!-- DataTales Example -->
     <div class="card shadow mb-4 col-lg-6">
         <form method="post" class="mx-5 my-3">
-            <!-- <div class="form-group">
-                <label for="nama_admin">Admin :</label>
-                <select name="id_admin" class="form-control" id="nama_admin" required>
-                    <option value="" selected disabled>-Pilih Admin-</option>
-                    <?php foreach ($admin as $row) : ?>
-                        <option value="<?= $row['id_admin']; ?>"><?= $row['nama_admin']; ?></option>
-                    <?php endforeach; ?>
-                </select>
-                <small class="form-text text-danger"><?= form_error('id_admin'); ?></small>
-            </div> -->
-
             <div class="form-group">
                 <label for="nama_nasabah">Nasabah :</label>
                 <select name="id_nasabah" class="form-control" id="nama_nasabah" required>
@@ -50,7 +39,7 @@
 
             <div class="form-group">
                 <label for="berat">Berat (kg) :</label>
-                <input type="text" name="berat" class="form-control" id="berat" required>
+                <input type="number" name="berat" class="form-control" id="berat" required>
                 <small class="form-text text-danger"><?= form_error('berat'); ?></small>
             </div>
 

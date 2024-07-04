@@ -29,13 +29,13 @@
 
             <div class="form-group">
                 <label for="berat">Berat (kg) :</label>
-                <input type="text" name="berat" class="form-control" id="berat" value="<?= $sampah_terjual['berat']; ?>" required>
+                <input type="number" name="berat" class="form-control" id="berat" value="<?= $sampah_terjual['berat']; ?>" required>
                 <small class="form-text text-danger"><?= form_error('berat'); ?></small>
             </div>
 
             <div class="form-group">
                 <label for="harga">Harga (Rp) :</label>
-                <input type="text" name="harga" class="form-control" id="harga" value="<?= $sampah_terjual['harga']; ?>" required>
+                <input type="number" name="harga" class="form-control" id="harga" value="<?= $sampah_terjual['harga']; ?>" required>
                 <small class="form-text text-danger"><?= form_error('harga'); ?></small>
             </div>
 
