@@ -41,4 +41,9 @@ class M_kategori extends CI_Model
         $this->db->where($this->pk, $id_kategori);
         $this->db->update($this->table, $data);
     }
+
+    public function get_kategori_count(){
+        $this->db->from('kategori_sampah');
+        return $this->db->count_all_results();
+    }
 }

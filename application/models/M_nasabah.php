@@ -40,4 +40,10 @@ class M_nasabah extends CI_Model
         $this->db->where($this->pk, $id_nasabah);
         $this->db->update($this->table, $nasabahData);
     }
+
+    public function get_nasabah_count(){
+        $this->db->from('nasabah');
+        return $this->db->count_all_results();
+    }
+
 }
