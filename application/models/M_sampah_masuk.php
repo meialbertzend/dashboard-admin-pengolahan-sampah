@@ -54,4 +54,9 @@ class M_sampah_masuk extends CI_Model
         $this->db->or_like('berat', $keyword);
         return $this->db->get('sampah_masuk')->result_array();
     }
+
+    public function get_sampah_masuk_count(){
+        $this->db->from('sampah_masuk');
+        return $this->db->count_all_results();
+    }
 }
