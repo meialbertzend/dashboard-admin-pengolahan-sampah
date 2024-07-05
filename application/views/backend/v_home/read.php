@@ -84,12 +84,42 @@
 </div>
 
 
+<!-- Begin Page Content -->
+<div class="container-fluid">
+<div class="card">
+        <div class="card-header">
+            <h5>Chart Sampah Terjual</h5>
+        </div>
+        <div class="card-body">
+            <canvas id="chart-sampah_terjual"></canvas>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<script>
+    const labels = [
+	'Jan','Feb','March','Apr','May','Jun','Jul','Agst','Sept','Oct','Nov','Dec',
+    ];
 
+const data = {
+	labels: labels,
+	datasets: [{
+		label: 'Harga Sampah Terjual',
+		backgroundColor: 'rgb(255, 99, 132)',
+		borderColor: 'rgb(255, 99, 132)',
+		data: [0, 15, 10, 45, 25, 50, 10],
+	}]
+};
 
-</div>
-</div>
-<!-- /.container-fluid -->
+const config = {
+	type: 'line',
+	data: data,
+	options: {}
+	};
 
-</div>
-<!-- End of Main Content -->
+    const myChart = new Chart(
+	document.getElementById('chart-sampah_terjual'),
+	config
+    );
+
+</script>

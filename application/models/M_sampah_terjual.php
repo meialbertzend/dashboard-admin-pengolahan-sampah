@@ -58,4 +58,11 @@ class M_sampah_terjual extends CI_Model
         $this->db->from('sampah_terjual');
         return $this->db->count_all_results();
     }
+
+    public function get_harga_data() {
+        $this->db->select('harga');
+        $query = $this->db->get('sampah_terjual');
+        return $query->result_array();
+    }
+    
 }
