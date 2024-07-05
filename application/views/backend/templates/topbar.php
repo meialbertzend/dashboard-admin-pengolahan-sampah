@@ -18,11 +18,16 @@
                 <div class="topbar-divider d-none d-sm-block"></div>
 
                 <!-- Nav Item - User Information -->
+                <!-- Nav Item - User Information -->
+                <!-- Nav Item - User Information -->
+                <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?= $this->session->userdata('nama_admin'); ?>
-                        </span>
-                        <img class="img-profile rounded-circle" src="<?= base_url('assets/') ?>img/undraw_profile.svg">
+                        <div class="d-flex flex-column">
+                            <span class="text-gray-600 small mb-1"><?= $this->session->userdata('nama_admin'); ?></span>
+                            <span class="text-<?= ($this->session->userdata('level') == 'administrator') ? 'primary' : 'warning'; ?> small"><?= ucfirst($this->session->userdata('level')); ?></span>
+                        </div>
+                        <img class="img-profile rounded-circle ml-2" src="<?= base_url('assets/') ?>img/undraw_profile.svg"> <!-- Tambahkan margin kiri di sini -->
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -32,6 +37,9 @@
                         </a>
                     </div>
                 </li>
+
+
+
 
             </ul>
 

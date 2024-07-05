@@ -45,7 +45,7 @@ class Auth extends CI_Controller
             $array = array(
                 'id_admin' => $data['id_admin'],
                 'nama_admin' => $data['nama_admin'],
-                'IsAdmin' => 1
+                'level' => $data['level'] // Tambahkan level admin ke session
             );
             $this->session->set_userdata($array);
             redirect('Home', 'refresh');

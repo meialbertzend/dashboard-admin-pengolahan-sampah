@@ -27,16 +27,18 @@
             </div>
 
             <div class="form-group">
-                <label for="berat">Berat (kg) :</label>
-                <input type="number" name="berat" class="form-control" id="berat" required>
+                <label for="berat">Berat (Kg) :</label>
+                <input type="number" step="0.01" name="berat" class="form-control" id="berat" required>
+
                 <small class="form-text text-danger"><?= form_error('berat'); ?></small>
             </div>
 
             <div class="form-group">
-                <label for="harga">Harga :</label>
-                <input type="number" name="harga" class="form-control" id="harga" required>
+                <label for="harga">Harga (Rp) :</label>
+                <input type="text" step="0.01" name="harga" class="form-control" id="harga" required>
                 <small class="form-text text-danger"><?= form_error('harga'); ?></small>
             </div>
+
 
             <button type="submit" name="create" class="btn btn-primary float-right">Simpan</button>
             <a href="<?= site_url('sampah_terjual') ?>" class="btn btn-danger float-right mx-2">Batal</a>

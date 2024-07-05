@@ -46,8 +46,8 @@
                                     <td><?= $sampah['nama_admin'] ?></td>
                                     <td><?= $sampah['nama_kategori'] ?></td>
                                     <td><?= $sampah['tgl_terjual'] ?></td>
-                                    <td><?= $sampah['berat'] ?></td>
-                                    <td><?= $sampah['harga'] ?></td>
+                                    <td><?= number_format($sampah['berat'], 2, ",", ".") . " Kg" ?></td>
+                                    <td><?= "Rp. " . number_format($sampah['harga'], 2, ",", ".") ?></td>
                                     <td class="my-5">
                                         <a class="btn btn-success" href="<?php echo site_url('sampah_terjual/edit/') ?><?= $sampah['id_sampah_terjual']; ?>"><i class="fas fa-edit"></i></a>
                                         <a type="button" class="btn btn-danger" onclick="return confirm('Yakin Ingin hapus?');" href="<?php echo site_url('sampah_terjual/delete/') ?><?= $sampah['id_sampah_terjual'] ?>"><i class="fas fa-trash"></i></a>

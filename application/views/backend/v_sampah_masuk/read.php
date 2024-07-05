@@ -47,7 +47,7 @@
                                     <td><?= $sampah['nama_nasabah'] ?></td>
                                     <td><?= $sampah['nama_kategori'] ?></td>
                                     <td><?= $sampah['tgl_pengumpulan'] ?></td>
-                                    <td><?= $sampah['berat'] ?></td>
+                                    <td><?= number_format($sampah['berat'], 2, ",", ".") . " Kg" ?></td>
                                     <td class="my-5">
                                         <a class="btn btn-success" href="<?php echo site_url('sampah_masuk/edit/') ?><?= $sampah['id_sampah_masuk']; ?>"><i class="fas fa-edit"></i></a>
                                         <a type="button" class="btn btn-danger" onclick="return confirm('Yakin Ingin hapus?');" href="<?php echo site_url('sampah_masuk/delete/') ?><?= $sampah['id_sampah_masuk'] ?>"><i class="fas fa-trash"></i></a>

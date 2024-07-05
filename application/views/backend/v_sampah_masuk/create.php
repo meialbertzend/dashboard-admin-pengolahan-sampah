@@ -39,7 +39,7 @@
 
             <div class="form-group">
                 <label for="berat">Berat (kg) :</label>
-                <input type="number" name="berat" class="form-control" id="berat" required>
+                <input type="number" step="0.01" name="berat" class="form-control" id="berat" required>
                 <small class="form-text text-danger"><?= form_error('berat'); ?></small>
             </div>
 
