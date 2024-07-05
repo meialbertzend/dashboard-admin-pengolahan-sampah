@@ -14,7 +14,8 @@ class M_admin extends CI_Model
         $data = [
             "id_admin" => $this->input->post('id_admin', true),
             "nama_admin" => $this->input->post('nama_admin', true),
-            "pswd_admin" => md5($this->input->post('pswd_admin'))
+            "pswd_admin" => md5($this->input->post('pswd_admin')),
+            "level" => $this->input->post('level', true)
         ];
 
         $this->db->insert('admin', $data);

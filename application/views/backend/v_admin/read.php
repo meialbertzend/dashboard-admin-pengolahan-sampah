@@ -29,6 +29,7 @@
                             <th>Username</th>
                             <th>Nama</th>
                             <th>Password</th>
+                            <th>Level Admin</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -41,6 +42,8 @@
                                 <td><?= $row['id_admin'] ?></td>
                                 <td><?= $row['nama_admin'] ?></td>
                                 <td><?= $row['pswd_admin'] ?></td>
+                                <td><?= $row['level'] ?></td>
+
                                 <td class="my-5">
                                     <a class="btn btn-success" href="<?= site_url('admin/edit/') . $row['id_admin'] ?>"><i class="fas fa-edit"></i></a>
                                     <a class="btn btn-danger" onclick="return confirm('Yakin Ingin hapus?');" href="<?= site_url('admin/delete/') . $row['id_admin'] ?>"><i class="fas fa-trash"></i></a>

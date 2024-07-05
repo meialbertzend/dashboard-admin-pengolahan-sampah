@@ -20,6 +20,15 @@
                 <input type="password" name="pswd_admin" class="form-control" id="pswd_admin" value="<?= set_value('pswd_admin', $admin['pswd_admin']); ?>">
                 <small class="form-text text-danger"><?= form_error('pswd_admin'); ?></small>
             </div>
+            <div class="form-group">
+                <label for="level">Level Admin:</label>
+                <select name="level" class="form-control" id="level" required>
+                    <option value="" selected disabled>-Pilih Level-</option>
+                    <option value="administrator" <?= $admin['level'] == 'administrator' ? 'selected' : '' ?>>Administrator</option>
+                    <option value="admin" <?= $admin['level'] == 'admin' ? 'selected' : '' ?>>Admin</option>
+                </select>
+                <small class="form-text text-danger"><?= form_error('level'); ?></small>
+            </div>
             <button type="submit" name="edit" class="btn btn-primary float-right">Simpan</button>
             <a href="<?= site_url('admin') ?>" class="btn btn-danger float-right mx-2">Batal</a>
         </form>
