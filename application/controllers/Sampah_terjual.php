@@ -17,6 +17,8 @@ class Sampah_terjual extends CI_Controller
         $data['title'] = 'Data Sampah Terjual';
         $data['sampah_terjual'] = $this->M_sampah_terjual->GetAllSampahTerjual();
         $data['namaAdmin'] = $this->db->get_where('admin', ['id_admin' => $this->session->userdata('id_admin')])->row_array();
+        $harga_data = $this->M_sampah_terjual->get_harga_data(); 
+        $data['harga_data'] = array_column($harga_data, 'harga');
 
         $this->load->view('backend/templates/header', $data);
         $this->load->view('backend/templates/sidebar', $data);
