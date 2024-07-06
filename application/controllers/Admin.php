@@ -8,6 +8,9 @@ class Admin extends CI_Controller
         parent::__construct();
         $this->load->model('M_admin');
         $this->load->library('form_validation');
+        $this->load->helper('islogin'); // Tambahkan ini
+        IsLoggedIn(); // Cek apakah pengguna sudah login
+        IsAdmin(); // Cek apakah pengguna adalah administrator
     }
 
     public function index()

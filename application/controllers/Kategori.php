@@ -8,6 +8,7 @@ class Kategori extends CI_Controller
         parent::__construct();
         $this->load->model('M_kategori');
         $this->load->library('form_validation');
+        IsLoggedIn(); // Cek apakah pengguna sudah login
     }
 
     public function index()

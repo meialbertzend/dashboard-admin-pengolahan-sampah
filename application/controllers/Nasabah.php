@@ -9,6 +9,7 @@ class Nasabah extends CI_Controller
         parent::__construct();
         $this->load->model('M_nasabah');
         $this->load->library('form_validation');
+        IsLoggedIn(); // Cek apakah pengguna sudah login
     }
 
     public function index()

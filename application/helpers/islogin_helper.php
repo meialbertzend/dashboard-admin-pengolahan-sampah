@@ -1,12 +1,26 @@
 <?php
-//-->session
+defined('BASEPATH') or exit('No direct script access allowed');
+
+function IsLoggedIn()
+{
+    $ci = &get_instance();
+    if (!$ci->session->userdata('id_admin')) {
+        redirect('auth', 'refresh');
+    }
+}
 
 function IsAdmin()
 {
     $ci = &get_instance();
-    //session akan aktif jika session bernilai 1
-    if ($ci->session->userdata('IsAdmin') <> 1) {
+    if ($ci->session->userdata('level') != 'administrator') {
         redirect('auth', 'refresh');
     }
 }
-//-->Endsession
+
+function IsRegularAdmin()
+{
+    $ci = &get_instance();
+    if ($ci->session->userdata('level') != 'admin') {
+        redirect('auth', 'refresh');
+    }
+}
