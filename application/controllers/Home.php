@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -24,6 +23,20 @@ class Home extends CI_Controller
         $data['sampah_masuk_count'] = $this->M_sampah_masuk->get_sampah_masuk_count();
         $data['sampah_terjual_count'] = $this->M_sampah_terjual->get_sampah_terjual_count();
 
+        // Data for charts
+        $data['sampah_masuk_labels'] = $this->M_sampah_masuk->getLabels();
+        $data['sampah_masuk_data'] = $this->M_sampah_masuk->getData();
+        $data['sampah_terjual_labels'] = $this->M_sampah_terjual->getLabels();
+        $data['sampah_terjual_data'] = $this->M_sampah_terjual->getData();
+
+        // Pastikan method ini ada di model
+        $data['labels_sampah_masuk'] = $this->M_sampah_masuk->getLabels();
+        $data['data_sampah_masuk'] = $this->M_sampah_masuk->getData();
+        $data['labels_sampah_terjual'] = $this->M_sampah_terjual->getLabels();
+        $data['data_sampah_terjual'] = $this->M_sampah_terjual->getData();
+
+
+        $this->load->view('backend/templates/header', $data);
         $this->load->view('backend/templates/header', $data);
         $this->load->view('backend/templates/sidebar', $data);
         $this->load->view('backend/templates/topbar', $data);

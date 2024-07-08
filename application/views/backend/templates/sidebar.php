@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sticky sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center my-3" href="Home">
@@ -17,22 +17,30 @@
         <div class="sidebar-heading">
             Administrator
         </div>
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item <?= $this->uri->segment(1) == 'Home' ? 'active' : ''; ?>">
-            <a class="nav-link" href="Home">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
         <!-- Divider -->
-        <hr class="sidebar-divider">
+    <?php endif; ?>
+    <!-- Nav Item - Dashboard -->
+    <?php if ($this->session->userdata('level') == 'admin') : ?>
+        <hr class="sidebar-divider"><!--ini adalah garis yang ada dibawah-->
+        <div class="sidebar-heading">
+            Admin
+        </div>
+    <?php endif; ?>
 
+    <li class="nav-item <?= $this->uri->segment(1) == 'Home' ? 'active' : ''; ?>">
+        <a class="nav-link" href="Home">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <?php if ($this->session->userdata('level') == 'administrator') : ?>
+        <hr class="sidebar-divider">
         <!-- Heading -->
         <div class="sidebar-heading">
             Data
         </div>
     <?php endif; ?>
+
 
     <!-- Nav Item - Data Admin (Hanya untuk Administrator) -->
     <?php if ($this->session->userdata('level') == 'administrator') : ?>

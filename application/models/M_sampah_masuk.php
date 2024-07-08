@@ -3,9 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class M_sampah_masuk extends CI_Model
 {
-    // $table sebagai tabel yang digunakan, dengan pemanggilannya $this->table
     private $table = 'sampah_masuk';
-    // $pk atau Primary Key yang digunakan, dengan pemanggilannya $this->pk
     private $pk = 'id_sampah_masuk';
 
     public function GetAllSampahMasuk()
@@ -55,8 +53,32 @@ class M_sampah_masuk extends CI_Model
         return $this->db->get('sampah_masuk')->result_array();
     }
 
-    public function get_sampah_masuk_count(){
+    public function get_sampah_masuk_count()
+    {
         $this->db->from('sampah_masuk');
         return $this->db->count_all_results();
+    }
+
+    public function getLabels()
+    {
+        $this->db->select('DATE(tgl_pengumpulan) as date');
+        $this->db->group_by('DATE(tgl_pengumpulan)');
+        $result = $this->db->get('sampah_masuk')->result_array();
+        return array_column($result, 'date');
+    }
+
+    public function getData()
+    {
+        $this->db->select('SUM(berat) as total_berat, DATE(tgl_pengumpulan) as date');
+        $this->db->group_by('DATE(tgl_pengumpulan)');
+        $result = $this->db->get('sampah_masuk')->result_array();
+        return array_column($result, 'total_berat');
+    }
+
+    public function getTotalMasuk()
+    {
+        $this->db->select_sum('berat');
+        $result = $this->db->get('sampah_masuk')->row();
+        return $result->berat;
     }
 }
