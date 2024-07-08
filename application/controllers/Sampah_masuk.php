@@ -11,6 +11,7 @@ class Sampah_masuk extends CI_Controller
         $this->load->model('M_kategori');
         $this->load->model('M_admin');
         $this->load->library('form_validation');
+        IsLoggedIn(); // Cek apakah pengguna sudah login
     }
 
     public function index()

@@ -54,15 +54,32 @@ class M_sampah_terjual extends CI_Model
         return $this->db->get('sampah_terjual')->result_array();
     }
 
-    public function get_sampah_terjual_count(){
+    public function get_sampah_terjual_count()
+    {
         $this->db->from('sampah_terjual');
         return $this->db->count_all_results();
     }
 
-    public function get_harga_data() {
+    public function get_harga_data()
+    {
         $this->db->select('harga');
         $query = $this->db->get('sampah_terjual');
         return $query->result_array();
     }
-    
+
+    public function getLabels()
+    {
+        $this->db->select('tgl_terjual');
+        $this->db->group_by('tgl_terjual');
+        $query = $this->db->get('sampah_terjual');
+        return array_column($query->result_array(), 'tgl_terjual');
+    }
+
+    public function getData()
+    {
+        $this->db->select('tgl_terjual, SUM(berat) as total_berat');
+        $this->db->group_by('tgl_terjual');
+        $query = $this->db->get('sampah_terjual');
+        return array_column($query->result_array(), 'total_berat');
+    }
 }

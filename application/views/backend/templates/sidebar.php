@@ -1,5 +1,5 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sticky sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center my-3" href="Home">
@@ -17,36 +17,34 @@
         <div class="sidebar-heading">
             Administrator
         </div>
-
-        <!-- Nav Item - Dashboard -->
-        <li class="nav-item">
-            <a class="nav-link" href="Home">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span></a>
-        </li>
-
         <!-- Divider -->
-        <hr class="sidebar-divider">
+    <?php endif; ?>
+    <!-- Nav Item - Dashboard -->
+    <?php if ($this->session->userdata('level') == 'admin') : ?>
+        <hr class="sidebar-divider"><!--ini adalah garis yang ada dibawah-->
+        <div class="sidebar-heading">
+            Admin
+        </div>
+    <?php endif; ?>
 
+    <li class="nav-item <?= $this->uri->segment(1) == 'Home' ? 'active' : ''; ?>">
+        <a class="nav-link" href="Home">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span></a>
+    </li>
+
+    <?php if ($this->session->userdata('level') == 'administrator') : ?>
+        <hr class="sidebar-divider">
         <!-- Heading -->
         <div class="sidebar-heading">
             Data
         </div>
     <?php endif; ?>
-    <!-- Heading -->
-
-
-
-
-    <!-- Nav Item - Charts -->
-
-
-    <!-- Nav Item - Sampah Terjual -->
 
 
     <!-- Nav Item - Data Admin (Hanya untuk Administrator) -->
     <?php if ($this->session->userdata('level') == 'administrator') : ?>
-        <li class="nav-item">
+        <li class="nav-item <?= $this->uri->segment(1) == 'Admin' ? 'active' : ''; ?>">
             <a class="nav-link" href="<?php echo site_url('Admin') ?>">
                 <i class="fas fa-fw fa-user-lock"></i>
                 <span>Data Admin</span></a>
@@ -55,7 +53,7 @@
 
     <!-- Nav Item - Data Nasabah (Hanya untuk Administrator) -->
     <?php if ($this->session->userdata('level') == 'administrator') : ?>
-        <li class="nav-item">
+        <li class="nav-item <?= $this->uri->segment(1) == 'Nasabah' ? 'active' : ''; ?>">
             <a class="nav-link" href="<?php echo site_url('Nasabah') ?>">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Data Nasabah</span></a>
@@ -64,7 +62,7 @@
 
     <!-- Nav Item - Kategori Sampah (Hanya untuk Administrator) -->
     <?php if ($this->session->userdata('level') == 'administrator') : ?>
-        <li class="nav-item">
+        <li class="nav-item <?= $this->uri->segment(1) == 'Kategori' ? 'active' : ''; ?>">
             <a class="nav-link" href="<?php echo site_url('Kategori') ?>">
                 <i class="fas fa-fw fa-layer-group"></i>
                 <span>Kategori Sampah</span></a>
@@ -78,15 +76,16 @@
     </div>
     <!-- Nav Item - Sampah Masuk -->
     <?php if ($this->session->userdata('level') == 'administrator' || $this->session->userdata('level') == 'admin') : ?>
-        <li class="nav-item">
+        <li class="nav-item <?= $this->uri->segment(1) == 'Sampah_masuk' ? 'active' : ''; ?>">
             <a class="nav-link" href="<?php echo site_url('Sampah_masuk') ?>">
                 <i class="fas fa-fw fa-truck-moving"></i>
                 <span>Sampah Masuk</span></a>
         </li>
     <?php endif; ?>
 
+    <!-- Nav Item - Sampah Terjual -->
     <?php if ($this->session->userdata('level') == 'administrator' || $this->session->userdata('level') == 'admin') : ?>
-        <li class="nav-item">
+        <li class="nav-item <?= $this->uri->segment(1) == 'Sampah_terjual' ? 'active' : ''; ?>">
             <a class="nav-link" href="<?php echo site_url('Sampah_terjual') ?>">
                 <i class="fas fa-fw fa-shopping-cart"></i>
                 <span>Sampah Terjual</span></a>
@@ -102,5 +101,4 @@
     </div>
 
 </ul>
-
 <!-- End of Sidebar -->
