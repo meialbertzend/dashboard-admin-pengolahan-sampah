@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label for="PassAdmin">Password :</label>
-                <input type="password" name="pswd_admin" class="form-control" id="pswd_admin" value="<?= set_value('pswd_admin', $admin['pswd_admin']); ?>">
+                <input type="password" name="pswd_admin" class="form-control" id="pswd_admin" placeholder="Password Baru">
                 <small class="form-text text-danger"><?= form_error('pswd_admin'); ?></small>
             </div>
             <div class="form-group">

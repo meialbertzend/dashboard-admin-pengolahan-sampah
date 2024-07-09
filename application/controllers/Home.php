@@ -10,37 +10,83 @@ class Home extends CI_Controller
         $this->load->model('M_kategori');
         $this->load->model('M_sampah_masuk');
         $this->load->model('M_sampah_terjual');
-        $this->load->helper('islogin'); // Tambahkan ini
-        IsLoggedIn(); // Cek apakah pengguna sudah login
+        $this->load->helper('islogin');
+        IsLoggedIn();
     }
 
     public function index()
     {
         $data['title'] = 'Dashboard';
-        $data['namaAdmin'] = $this->db->get_where('admin', ['id_admin' => $this->session->userdata('id_admin')])->row_array();
-        $data['nasabah_count'] = $this->M_nasabah->get_nasabah_count();
-        $data['kategori_count'] = $this->M_kategori->get_kategori_count();
-        $data['sampah_masuk_count'] = $this->M_sampah_masuk->get_sampah_masuk_count();
-        $data['sampah_terjual_count'] = $this->M_sampah_terjual->get_sampah_terjual_count();
+        $data['namaAdmin'] = $this->getAdminData();
+        $data = array_merge($data, $this->getCounts());
+        $data = array_merge($data, $this->getMonthlyData());
 
-        // Data for charts
-        $data['sampah_masuk_labels'] = $this->M_sampah_masuk->getLabels();
-        $data['sampah_masuk_data'] = $this->M_sampah_masuk->getData();
-        $data['sampah_terjual_labels'] = $this->M_sampah_terjual->getLabels();
-        $data['sampah_terjual_data'] = $this->M_sampah_terjual->getData();
+        $this->loadViews('backend/v_home/read', $data);
+    }
 
-        // Pastikan method ini ada di model
-        $data['labels_sampah_masuk'] = $this->M_sampah_masuk->getLabels();
-        $data['data_sampah_masuk'] = $this->M_sampah_masuk->getData();
-        $data['labels_sampah_terjual'] = $this->M_sampah_terjual->getLabels();
-        $data['data_sampah_terjual'] = $this->M_sampah_terjual->getData();
+    private function getAdminData()
+    {
+        return $this->db->get_where('admin', ['id_admin' => $this->session->userdata('id_admin')])->row_array();
+    }
 
+    private function getCounts()
+    {
+        return [
+            'nasabah_count' => $this->M_nasabah->get_nasabah_count(),
+            'kategori_count' => $this->M_kategori->get_kategori_count(),
+            'sampah_masuk_count' => $this->M_sampah_masuk->getTotalMasuk(),
+            'sampah_terjual_count' => $this->M_sampah_terjual->getTotalBerat(),
+            'pendapatan_count' => $this->M_sampah_terjual->getTotalHarga()
+        ];
+    }
 
-        $this->load->view('backend/templates/header', $data);
+    private function getMonthlyData()
+    {
+        $labels_masuk = $this->M_sampah_masuk->getMonthlyLabels();
+        $data_masuk = $this->M_sampah_masuk->getMonthlyData();
+        $labels_terjual = $this->M_sampah_terjual->getMonthlyLabels();
+        $data_terjual = $this->M_sampah_terjual->getMonthlyData();
+
+        $labels = array_unique(array_merge($labels_masuk, $labels_terjual));
+        sort($labels);
+
+        $data_masuk_map = $this->mapData($data_masuk);
+        $data_terjual_map = $this->mapData($data_terjual);
+
+        $sampah_masuk_data = $this->prepareChartData($labels, $data_masuk_map);
+        $sampah_terjual_data = $this->prepareChartData($labels, $data_terjual_map);
+
+        return [
+            'labels' => $labels,
+            'sampah_masuk_data' => $sampah_masuk_data,
+            'sampah_terjual_data' => $sampah_terjual_data
+        ];
+    }
+
+    private function mapData($data)
+    {
+        $mapped_data = [];
+        foreach ($data as $item) {
+            $mapped_data[$item['month']] = $item['total_berat'];
+        }
+        return $mapped_data;
+    }
+
+    private function prepareChartData($labels, $data_map)
+    {
+        $chart_data = [];
+        foreach ($labels as $label) {
+            $chart_data[] = $data_map[$label] ?? 0;
+        }
+        return $chart_data;
+    }
+
+    private function loadViews($view, $data)
+    {
         $this->load->view('backend/templates/header', $data);
         $this->load->view('backend/templates/sidebar', $data);
         $this->load->view('backend/templates/topbar', $data);
-        $this->load->view('backend/v_home/read', $data);
+        $this->load->view($view, $data);
         $this->load->view('backend/templates/footer');
     }
 }

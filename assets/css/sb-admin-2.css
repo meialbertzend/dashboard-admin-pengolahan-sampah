@@ -10997,6 +10997,14 @@ form.user .btn-user {
   width: 12.5rem;
 }
 
+.border-left-custom {
+  border-left: 4px solid rgba(78, 115, 223, 1);
+}
+
+.text-custom {
+  color: rgba(78, 115, 223, 1);
+}
+
 @-webkit-keyframes noise-anim {
   0% {
     clip: rect(49px, 9999px, 40px, 0);

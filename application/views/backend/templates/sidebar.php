@@ -1,10 +1,10 @@
 <!-- Sidebar -->
-<ul class="navbar-nav bg-gradient-primary sticky sidebar sidebar-dark accordion" id="accordionSidebar">
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar style=" position: fixed; height: 100%; overflow-y: auto;"">
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center my-3" href="Home">
         <div class="sidebar-brand-icon rotate-n">
-            <img src="<?= base_url('assets/img/logo.png'); ?>" class="img-fluid mx-auto d-block p-1" alt="Logo" style="max-width: 100%; height: auto; ">
+            <img src="<?= base_url('assets/img/logo.png'); ?>" class="img-fluid mx-auto d-block p-1" alt="Logo" style="max-width: 100%; height: auto;">
         </div>
         <div class="sidebar-brand-text mx-3"><sup>GO</sup>SARI</div>
     </a>

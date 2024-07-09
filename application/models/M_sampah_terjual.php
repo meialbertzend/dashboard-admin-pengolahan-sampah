@@ -82,4 +82,32 @@ class M_sampah_terjual extends CI_Model
         $query = $this->db->get('sampah_terjual');
         return array_column($query->result_array(), 'total_berat');
     }
+    public function getMonthlyData()
+    {
+        $this->db->select('DATE_FORMAT(tgl_terjual, "%Y-%m") as month, SUM(berat) as total_berat');
+        $this->db->group_by('DATE_FORMAT(tgl_terjual, "%Y-%m")');
+        $result = $this->db->get('sampah_terjual')->result_array();
+        return $result;
+    }
+
+    public function getMonthlyLabels()
+    {
+        $this->db->select('DATE_FORMAT(tgl_terjual, "%Y-%m") as month');
+        $this->db->group_by('DATE_FORMAT(tgl_terjual, "%Y-%m")');
+        $result = $this->db->get('sampah_terjual')->result_array();
+        return array_column($result, 'month');
+    }
+    public function getTotalHarga()
+    {
+        $this->db->select_sum('harga');
+        $result = $this->db->get('sampah_terjual')->row();
+        return $result->harga;
+    }
+
+    public function getTotalBerat()
+    {
+        $this->db->select_sum('berat');
+        $result = $this->db->get('sampah_terjual')->row();
+        return $result->berat;
+    }
 }

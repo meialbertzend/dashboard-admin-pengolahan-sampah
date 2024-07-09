@@ -81,4 +81,19 @@ class M_sampah_masuk extends CI_Model
         $result = $this->db->get('sampah_masuk')->row();
         return $result->berat;
     }
+    public function getMonthlyData()
+    {
+        $this->db->select('DATE_FORMAT(tgl_pengumpulan, "%Y-%m") as month, SUM(berat) as total_berat');
+        $this->db->group_by('DATE_FORMAT(tgl_pengumpulan, "%Y-%m")');
+        $result = $this->db->get('sampah_masuk')->result_array();
+        return $result;
+    }
+
+    public function getMonthlyLabels()
+    {
+        $this->db->select('DATE_FORMAT(tgl_pengumpulan, "%Y-%m") as month');
+        $this->db->group_by('DATE_FORMAT(tgl_pengumpulan, "%Y-%m")');
+        $result = $this->db->get('sampah_masuk')->result_array();
+        return array_column($result, 'month');
+    }
 }
