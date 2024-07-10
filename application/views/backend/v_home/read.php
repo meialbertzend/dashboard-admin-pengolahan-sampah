@@ -96,11 +96,11 @@
         </div>
 
 
-        <!-- Grafik Area Sampah Masuk & Terjual -->
+        <!-- Grafik Sampah Masuk & Terjual -->
         <div class="col-xl-8 col-lg-7 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Grafik Sampah Masuk dan Terjual</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Sampah Masuk dan Terjual</h6>
                     <div>
                         <select id="chartType" class="form-control">
                             <option value="area">Area Chart</option>
@@ -113,11 +113,10 @@
                 </div>
             </div>
 
-
             <!-- Grafik Bar Pendapatan -->
             <div class="card shadow mt-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Pendapatan dari Penjualan</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Bar Chart Pendapatan dari Penjualan</h6>
                 </div>
                 <div class="card-body">
                     <div class="chart-bar">
@@ -133,7 +132,7 @@
                 <div class="col-xl-12 mb-4">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Grafik Donut Sampah Masuk dan Terjual</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Pie Chart Sampah Masuk dan Terjual</h6>
                             <div>
                                 <select id="donutChartType" class="form-control">
                                     <option value="masuk">Sampah Masuk</option>
@@ -149,7 +148,7 @@
                 <div class="col-xl-12">
                     <div class="card shadow">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Sampah Masuk dan Sampah Terjual</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Pie Chart Sampah Masuk dan Sampah Terjual</h6>
                         </div>
                         <div class="card-body">
                             <div class="chart-pie">
