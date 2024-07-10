@@ -6,17 +6,17 @@
     <div class="card shadow mb-4 col-lg-6">
         <form method="post" class="mx-5 my-3">
             <div class="form-group">
-                <label for="IDAdmin">Username :</label>
+                <label for="id_admin">Username :</label>
                 <input type="text" name="id_admin" class="form-control" id="id_admin" value="<?= set_value('id_admin', $admin['id_admin']); ?>">
                 <small class="form-text text-danger"><?= form_error('id_admin'); ?></small>
             </div>
             <div class="form-group">
-                <label for="NamaAdmin">Nama Lengkap :</label>
+                <label for="nama_admin">Nama Lengkap :</label>
                 <input type="text" name="nama_admin" class="form-control" id="nama_admin" value="<?= set_value('nama_admin', $admin['nama_admin']); ?>">
                 <small class="form-text text-danger"><?= form_error('nama_admin'); ?></small>
             </div>
             <div class="form-group">
-                <label for="PassAdmin">Password :</label>
+                <label for="pswd_admin">Password :</label>
                 <input type="password" name="pswd_admin" class="form-control" id="pswd_admin" placeholder="Password Baru">
                 <small class="form-text text-danger"><?= form_error('pswd_admin'); ?></small>
             </div>

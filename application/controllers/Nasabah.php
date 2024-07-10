@@ -10,6 +10,7 @@ class Nasabah extends CI_Controller
         $this->load->model('M_nasabah');
         $this->load->library('form_validation');
         IsLoggedIn(); // Cek apakah pengguna sudah login
+        IsAdmin();
     }
 
     public function index()

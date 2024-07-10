@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <h1 class="h3 my-3 text-gray-800">
-        <i class="fas fa-fw fa-solid fa-chart-bar mx-3"></i><?= $title; ?>
+        <i class="fas fa-fw fa-truck-moving mx-3"></i><?= $title; ?>
     </h1>
 
     <!-- DataTales Example -->

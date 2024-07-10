@@ -28,7 +28,7 @@
     <?php endif; ?>
 
     <li class="nav-item <?= $this->uri->segment(1) == 'Home' ? 'active' : ''; ?>">
-        <a class="nav-link" href="Home">
+        <a class="nav-link" href="<?= base_url('Home'); ?>">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
     </li>
@@ -45,7 +45,7 @@
     <!-- Nav Item - Data Admin (Hanya untuk Administrator) -->
     <?php if ($this->session->userdata('level') == 'administrator') : ?>
         <li class="nav-item <?= $this->uri->segment(1) == 'Admin' ? 'active' : ''; ?>">
-            <a class="nav-link" href="<?php echo site_url('Admin') ?>">
+            <a class="nav-link" href="<?= base_url('Admin'); ?>">
                 <i class="fas fa-fw fa-user-lock"></i>
                 <span>Data Admin</span></a>
         </li>
@@ -54,7 +54,7 @@
     <!-- Nav Item - Data Nasabah (Hanya untuk Administrator) -->
     <?php if ($this->session->userdata('level') == 'administrator') : ?>
         <li class="nav-item <?= $this->uri->segment(1) == 'Nasabah' ? 'active' : ''; ?>">
-            <a class="nav-link" href="<?php echo site_url('Nasabah') ?>">
+            <a class="nav-link" href="<?= base_url('Nasabah'); ?>">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Data Nasabah</span></a>
         </li>
@@ -63,7 +63,7 @@
     <!-- Nav Item - Kategori Sampah (Hanya untuk Administrator) -->
     <?php if ($this->session->userdata('level') == 'administrator') : ?>
         <li class="nav-item <?= $this->uri->segment(1) == 'Kategori' ? 'active' : ''; ?>">
-            <a class="nav-link" href="<?php echo site_url('Kategori') ?>">
+            <a class="nav-link" href="<?= base_url('Kategori'); ?>">
                 <i class="fas fa-fw fa-layer-group"></i>
                 <span>Kategori Sampah</span></a>
         </li>
@@ -77,7 +77,7 @@
     <!-- Nav Item - Sampah Masuk -->
     <?php if ($this->session->userdata('level') == 'administrator' || $this->session->userdata('level') == 'admin') : ?>
         <li class="nav-item <?= $this->uri->segment(1) == 'Sampah_masuk' ? 'active' : ''; ?>">
-            <a class="nav-link" href="<?php echo site_url('Sampah_masuk') ?>">
+            <a class="nav-link" href="<?= base_url('Sampah_masuk'); ?>">
                 <i class="fas fa-fw fa-truck-moving"></i>
                 <span>Sampah Masuk</span></a>
         </li>
@@ -86,7 +86,7 @@
     <!-- Nav Item - Sampah Terjual -->
     <?php if ($this->session->userdata('level') == 'administrator' || $this->session->userdata('level') == 'admin') : ?>
         <li class="nav-item <?= $this->uri->segment(1) == 'Sampah_terjual' ? 'active' : ''; ?>">
-            <a class="nav-link" href="<?php echo site_url('Sampah_terjual') ?>">
+            <a class="nav-link" href="<?= base_url('Sampah_terjual'); ?>">
                 <i class="fas fa-fw fa-shopping-cart"></i>
                 <span>Sampah Terjual</span></a>
         </li>

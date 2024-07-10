@@ -2,7 +2,7 @@
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <h1 class="h3 my-3 text-gray-800"><i class="fas fa-user-lock mx-3"></i><?= $title; ?></h1>
+    <h1 class="h3 my-3 text-gray-800"><i class="fas fa-fw fa-users mx-3"></i></i><?= $title; ?></h1>
 
     <!-- DataTales Example -->
     <div class="card shadow mb-4 col-lg-6">
