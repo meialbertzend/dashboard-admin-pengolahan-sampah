@@ -18,8 +18,21 @@ class Home extends CI_Controller
     {
         $data['title'] = 'Dashboard';
         $data['namaAdmin'] = $this->getAdminData();
-        $data = array_merge($data, $this->getCounts());
-        $data = array_merge($data, $this->getMonthlyData());
+
+        // Mengambil data counts
+        $counts = $this->getCounts();
+        $data = array_merge($data, $counts);
+
+        // Mengambil data bulanan
+        $monthlyData = $this->getMonthlyData();
+        $data = array_merge($data, $monthlyData);
+
+        // Mengambil data untuk donut chart
+        $donutChartData = $this->getDonutChartData();
+        $data = array_merge($data, $donutChartData);
+
+        // Mengambil total pendapatan per bulan
+        $data['total_pendapatan_per_bulan'] = $this->M_sampah_terjual->getTotalPendapatanPerBulan();
 
         $this->loadViews('backend/v_home/read', $data);
     }
@@ -79,6 +92,14 @@ class Home extends CI_Controller
             $chart_data[] = $data_map[$label] ?? 0;
         }
         return $chart_data;
+    }
+
+    private function getDonutChartData()
+    {
+        return [
+            'sampah_masuk_per_kategori' => $this->M_sampah_masuk->get_sampah_masuk_per_kategori(),
+            'sampah_terjual_per_kategori' => $this->M_sampah_terjual->get_sampah_terjual_per_kategori()
+        ];
     }
 
     private function loadViews($view, $data)

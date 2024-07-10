@@ -96,4 +96,19 @@ class M_sampah_masuk extends CI_Model
         $result = $this->db->get('sampah_masuk')->result_array();
         return array_column($result, 'month');
     }
+    public function get_sampah_masuk_per_kategori()
+    {
+        $query = $this->db->select('kategori_sampah.nama_kategori, SUM(sampah_masuk.berat) as total_berat')
+            ->from('sampah_masuk')
+            ->join('kategori_sampah', 'sampah_masuk.id_kategori = kategori_sampah.id_kategori')
+            ->group_by('kategori_sampah.nama_kategori')
+            ->get();
+
+        $data = [];
+        foreach ($query->result() as $row) {
+            $data[$row->nama_kategori] = $row->total_berat;
+        }
+
+        return $data;
+    }
 }

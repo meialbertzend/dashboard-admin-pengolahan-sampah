@@ -110,4 +110,28 @@ class M_sampah_terjual extends CI_Model
         $result = $this->db->get('sampah_terjual')->row();
         return $result->berat;
     }
+    public function get_sampah_terjual_per_kategori()
+    {
+        $query = $this->db->select('kategori_sampah.nama_kategori, SUM(sampah_terjual.berat) as total_berat')
+            ->from('sampah_terjual')
+            ->join('kategori_sampah', 'sampah_terjual.id_kategori = kategori_sampah.id_kategori')
+            ->group_by('kategori_sampah.nama_kategori')
+            ->get();
+
+        $data = [];
+        foreach ($query->result() as $row) {
+            $data[$row->nama_kategori] = $row->total_berat;
+        }
+
+        return $data;
+    }
+    public function getTotalPendapatanPerBulan()
+    {
+        $query = $this->db->select('DATE_FORMAT(tgl_terjual, "%Y-%m") as bulan, SUM(harga) as total_pendapatan')
+            ->from('sampah_terjual') // Sesuaikan dengan nama tabel transaksi
+            ->group_by('MONTH(tgl_terjual)')
+            ->get();
+
+        return $query->result_array();
+    }
 }
