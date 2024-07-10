@@ -98,28 +98,21 @@
 
         <!-- Grafik Area Sampah Masuk & Terjual -->
         <div class="col-xl-8 col-lg-7 mb-4">
-            <div class="card shadow">
+            <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Sampah Masuk dan Terjual</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Grafik Sampah Masuk dan Terjual</h6>
+                    <div>
+                        <select id="chartType" class="form-control">
+                            <option value="area">Area Chart</option>
+                            <option value="bar">Bar Chart</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="myAreaChart"></canvas>
-                    </div>
+                    <canvas id="combinedChart"></canvas>
                 </div>
             </div>
 
-            <!-- Grafik Bar Sampah Masuk dan Terjual-->
-            <div class="card shadow mt-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Sampah Masuk dan Terjual</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-bar">
-                        <canvas id="myBarChart"></canvas>
-                    </div>
-                </div>
-            </div>
 
             <!-- Grafik Bar Pendapatan -->
             <div class="card shadow mt-4">
@@ -138,20 +131,18 @@
         <div class="col-xl-4 col-lg-5">
             <div class="row">
                 <div class="col-xl-12 mb-4">
-                    <div class="card shadow">
+                    <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Sampah Berdasarkan Kategori</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Grafik Donut Sampah Masuk dan Terjual</h6>
                             <div>
-                                <select id="chartType" class="form-control">
+                                <select id="donutChartType" class="form-control">
                                     <option value="masuk">Sampah Masuk</option>
                                     <option value="terjual">Sampah Terjual</option>
                                 </select>
                             </div>
                         </div>
                         <div class="card-body">
-                            <div class="chart-pie">
-                                <canvas id="myDonutChart"></canvas>
-                            </div>
+                            <canvas id="myDonutChart"></canvas>
                         </div>
                     </div>
                 </div>
@@ -177,197 +168,165 @@
     <!-- Script Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Area Chart
-        var ctxArea = document.getElementById('myAreaChart').getContext('2d');
-        var myAreaChart = new Chart(ctxArea, {
-            type: 'line',
-            data: {
-                labels: <?= json_encode($labels); ?>,
-                datasets: [{
-                    label: 'Sampah Masuk',
-                    data: <?= json_encode($sampah_masuk_data); ?>,
-                    borderColor: 'rgba(78, 115, 223, 1)',
-                    backgroundColor: 'rgba(78, 115, 223, 0.05)',
-                    pointRadius: 3,
-                    pointBackgroundColor: 'rgba(78, 115, 223, 1)',
-                    pointBorderColor: 'rgba(78, 115, 223, 1)',
-                    pointHoverRadius: 3,
-                    pointHoverBackgroundColor: 'rgba(78, 115, 223, 1)',
-                    pointHoverBorderColor: 'rgba(78, 115, 223, 1)',
-                    pointHitRadius: 10,
-                    pointBorderWidth: 2,
-                    tension: 0.3,
-                }, {
-                    label: 'Sampah Terjual',
-                    data: <?= json_encode($sampah_terjual_data); ?>,
-                    borderColor: 'rgba(28, 200, 138, 1)',
-                    backgroundColor: 'rgba(28, 200, 138, 0.05)',
-                    pointRadius: 3,
-                    pointBackgroundColor: 'rgba(28, 200, 138, 1)',
-                    pointBorderColor: 'rgba(28, 200, 138, 1)',
-                    pointHoverRadius: 3,
-                    pointHoverBackgroundColor: 'rgba(28, 200, 138, 1)',
-                    pointHoverBorderColor: 'rgba(28, 200, 138, 1)',
-                    pointHitRadius: 10,
-                    pointBorderWidth: 2,
-                    tension: 0.3,
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        time: {
-                            unit: 'date'
-                        },
-                        grid: {
-                            display: false,
-                            drawBorder: false
-                        },
-                        ticks: {
-                            maxTicksLimit: 7
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            maxTicksLimit: 5,
-                            padding: 10,
-                            callback: function(value, index, values) {
-                                // Format angka dengan koma 2 angka desimal
-                                return new Intl.NumberFormat('id-ID', {
-                                    style: 'decimal',
-                                    minimumFractionDigits: 2
-                                }).format(value) + ' Kg';
-                            }
-                        },
-                        grid: {
-                            color: 'rgb(234, 236, 244)',
-                            zeroLineColor: 'rgb(234, 236, 244)',
-                            drawBorder: false,
-                            borderDash: [2],
-                            zeroLineBorderDash: [2]
-                        }
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                // Format tooltip dengan koma 2 angka desimal
-                                var value = tooltipItem.raw;
-                                return tooltipItem.dataset.label + ': ' + new Intl.NumberFormat('id-ID', {
-                                    style: 'decimal',
-                                    minimumFractionDigits: 2
-                                }).format(value) + ' Kg';
-                            }
-                        }
-                    }
-                },
-                legend: {
-                    display: false
-                },
-                tooltips: {
-                    backgroundColor: 'rgb(255, 255, 255)',
-                    bodyColor: '#858796',
-                    titleColor: '#6e707e',
-                    titleMarginBottom: 10,
-                    borderColor: '#dddfeb',
-                    borderWidth: 1,
-                    xPadding: 15,
-                    yPadding: 15,
-                    displayColors: false,
-                    caretPadding: 10
+        document.addEventListener('DOMContentLoaded', function() {
+            const combinedChartCtx = document.getElementById('combinedChart').getContext('2d');
+            let combinedChart;
+
+            const sampahMasukData = <?= json_encode($sampah_masuk_data); ?>;
+            const sampahTerjualData = <?= json_encode($sampah_terjual_data); ?>;
+            const labels = <?= json_encode($labels); ?>;
+
+            function createCombinedChart(chartType) {
+                if (combinedChart) {
+                    combinedChart.destroy();
                 }
+
+                let datasets;
+                if (chartType === 'area') {
+                    datasets = [{
+                        label: 'Sampah Masuk',
+                        data: sampahMasukData,
+                        borderColor: 'rgba(78, 115, 223, 1)',
+                        backgroundColor: 'rgba(78, 115, 223, 0.05)',
+                        pointRadius: 3,
+                        pointBackgroundColor: 'rgba(78, 115, 223, 1)',
+                        pointBorderColor: 'rgba(78, 115, 223, 1)',
+                        pointHoverRadius: 3,
+                        pointHoverBackgroundColor: 'rgba(78, 115, 223, 1)',
+                        pointHoverBorderColor: 'rgba(78, 115, 223, 1)',
+                        pointHitRadius: 10,
+                        pointBorderWidth: 2,
+                        tension: 0.3,
+                    }, {
+                        label: 'Sampah Terjual',
+                        data: sampahTerjualData,
+                        borderColor: 'rgba(28, 200, 138, 1)',
+                        backgroundColor: 'rgba(28, 200, 138, 0.05)',
+                        pointRadius: 3,
+                        pointBackgroundColor: 'rgba(28, 200, 138, 1)',
+                        pointBorderColor: 'rgba(28, 200, 138, 1)',
+                        pointHoverRadius: 3,
+                        pointHoverBackgroundColor: 'rgba(28, 200, 138, 1)',
+                        pointHoverBorderColor: 'rgba(28, 200, 138, 1)',
+                        pointHitRadius: 10,
+                        pointBorderWidth: 2,
+                        tension: 0.3,
+                    }];
+                } else if (chartType === 'bar') {
+                    datasets = [{
+                        label: 'Sampah Masuk',
+                        data: sampahMasukData,
+                        backgroundColor: 'rgba(78, 115, 223, 1)',
+                        borderColor: 'rgba(78, 115, 223, 1)',
+                        hoverBackgroundColor: 'rgba(78, 115, 223, 0.9)',
+                        hoverBorderColor: 'rgba(78, 115, 223, 1)',
+                    }, {
+                        label: 'Sampah Terjual',
+                        data: sampahTerjualData,
+                        backgroundColor: 'rgba(28, 200, 138, 1)',
+                        borderColor: 'rgba(28, 200, 138, 1)',
+                        hoverBackgroundColor: 'rgba(28, 200, 138, 0.9)',
+                        hoverBorderColor: 'rgba(28, 200, 138, 1)',
+                    }];
+                }
+
+                combinedChart = new Chart(combinedChartCtx, {
+                    type: (chartType === 'area') ? 'line' : 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: datasets
+                    },
+                    options: {
+                        maintainAspectRatio: false,
+                        scales: {
+                            x: {
+                                time: {
+                                    unit: 'date'
+                                },
+                                grid: {
+                                    display: false,
+                                    drawBorder: false
+                                },
+                                ticks: {
+                                    maxTicksLimit: 7
+                                }
+                            },
+                            y: {
+                                ticks: {
+                                    maxTicksLimit: 5,
+                                    padding: 10,
+                                    callback: function(value, index, values) {
+                                        return new Intl.NumberFormat('id-ID', {
+                                            style: 'decimal',
+                                            minimumFractionDigits: 2
+                                        }).format(value) + ' Kg';
+                                    }
+                                },
+                                grid: {
+                                    color: 'rgb(234, 236, 244)',
+                                    zeroLineColor: 'rgb(234, 236, 244)',
+                                    drawBorder: false,
+                                    borderDash: [2],
+                                    zeroLineBorderDash: [2]
+                                }
+                            }
+                        },
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(tooltipItem) {
+                                        var value = tooltipItem.raw;
+                                        return tooltipItem.dataset.label + ': ' + new Intl.NumberFormat('id-ID', {
+                                            style: 'decimal',
+                                            minimumFractionDigits: 2
+                                        }).format(value) + ' Kg';
+                                    }
+                                }
+                            }
+                        },
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            align: 'end',
+                            labels: {
+                                usePointStyle: true
+                            }
+                        },
+                        tooltips: {
+                            backgroundColor: 'rgb(255, 255, 255)',
+                            bodyColor: '#858796',
+                            titleColor: '#6e707e',
+                            titleMarginBottom: 10,
+                            borderColor: '#dddfeb',
+                            borderWidth: 1,
+                            xPadding: 15,
+                            yPadding: 15,
+                            displayColors: false,
+                            caretPadding: 10
+                        }
+                    }
+                });
             }
+
+            createCombinedChart('area'); // Default chart type
+
+            const combinedChartTypeSelect = document.getElementById('chartType');
+            combinedChartTypeSelect.addEventListener('change', function() {
+                const selectedChartType = combinedChartTypeSelect.value;
+                createCombinedChart(selectedChartType);
+            });
+
+            // Event listener untuk reset chart jika membutuhkan
+            window.addEventListener('resize', function() {
+                if (combinedChart) {
+                    combinedChart.resize();
+                }
+            });
         });
 
-        // Bar Chart
-        var ctxBar = document.getElementById('myBarChart').getContext('2d');
-        var myBarChart = new Chart(ctxBar, {
-            type: 'bar',
-            data: {
-                labels: <?= json_encode($labels); ?>,
-                datasets: [{
-                    label: 'Sampah Masuk',
-                    data: <?= json_encode($sampah_masuk_data); ?>,
-                    backgroundColor: 'rgba(78, 115, 223, 1)',
-                    borderColor: 'rgba(78, 115, 223, 1)',
-                    hoverBackgroundColor: 'rgba(78, 115, 223, 0.9)',
-                    hoverBorderColor: 'rgba(78, 115, 223, 1)',
-                }, {
-                    label: 'Sampah Terjual',
-                    data: <?= json_encode($sampah_terjual_data); ?>,
-                    backgroundColor: 'rgba(28, 200, 138, 1)',
-                    borderColor: 'rgba(28, 200, 138, 1)',
-                    hoverBackgroundColor: 'rgba(28, 200, 138, 0.9)',
-                    hoverBorderColor: 'rgba(28, 200, 138, 1)',
-                }]
-            },
-            options: {
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        grid: {
-                            display: false,
-                            drawBorder: false
-                        },
-                        ticks: {
-                            maxTicksLimit: 6
-                        }
-                    },
-                    y: {
-                        ticks: {
-                            maxTicksLimit: 5,
-                            padding: 10,
-                            callback: function(value, index, values) {
-                                // Format angka dengan koma 2 angka desimal
-                                return new Intl.NumberFormat('id-ID', {
-                                    style: 'decimal',
-                                    minimumFractionDigits: 2
-                                }).format(value) + ' Kg';
-                            }
-                        },
-                        grid: {
-                            display: true,
-                            drawBorder: false,
-                            color: 'rgb(234, 236, 244)',
-                            zeroLineColor: 'rgb(234, 236, 244)',
-                            borderDash: [2],
-                            zeroLineBorderDash: [2]
-                        }
-                    }
-                },
-                plugins: {
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                // Format tooltip dengan koma 2 angka desimal
-                                var value = tooltipItem.raw;
-                                return tooltipItem.dataset.label + ': ' + new Intl.NumberFormat('id-ID', {
-                                    style: 'decimal',
-                                    minimumFractionDigits: 2
-                                }).format(value) + ' Kg';
-                            }
-                        }
-                    }
-                },
-                legend: {
-                    display: false
-                },
-                tooltips: {
-                    backgroundColor: 'rgb(255, 255, 255)',
-                    bodyColor: '#858796',
-                    titleColor: '#6e707e',
-                    titleMarginBottom: 10,
-                    borderColor: '#dddfeb',
-                    borderWidth: 1,
-                    xPadding: 15,
-                    yPadding: 15,
-                    displayColors: false,
-                    caretPadding: 10
-                }
-            }
-        });
+
+
+
         /// Ambil data total pendapatan per bulan dari PHP
         var labels = <?= json_encode(array_column($total_pendapatan_per_bulan, 'bulan')); ?>;
         var data = <?= json_encode(array_column($total_pendapatan_per_bulan, 'total_pendapatan')); ?>;
@@ -482,54 +441,68 @@
             }
         });
 
-        // Donut Chart
+        //h
         document.addEventListener('DOMContentLoaded', function() {
-            const ctx = document.getElementById('myDonutChart').getContext('2d');
-            const chartTypeSelect = document.getElementById('chartType');
+            const donutChartCtx = document.getElementById('myDonutChart').getContext('2d');
+            let donutChart;
 
             const dataMasuk = <?= json_encode($sampah_masuk_per_kategori); ?>;
             const dataTerjual = <?= json_encode($sampah_terjual_per_kategori); ?>;
 
-            const chartData = {
-                labels: Object.keys(dataMasuk),
-                datasets: [{
-                    data: Object.values(dataMasuk),
-                    backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56'],
-                    hoverBackgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56']
-                }]
-            };
+            function createDonutChart(data) {
+                if (donutChart) {
+                    donutChart.destroy();
+                }
 
-            const donutChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: chartData,
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        tooltip: {
-                            callbacks: {
-                                label: function(tooltipItem) {
-                                    var value = tooltipItem.raw;
-                                    return tooltipItem.label + ': ' + new Intl.NumberFormat('id-ID', {
-                                        style: 'decimal',
-                                        minimumFractionDigits: 2
-                                    }).format(value) + ' Kg';
+                donutChart = new Chart(donutChartCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: Object.keys(data),
+                        datasets: [{
+                            data: Object.values(data),
+                            backgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56'],
+                            hoverBackgroundColor: ['#ff6384', '#36a2eb', '#cc65fe', '#ffce56']
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            tooltip: {
+                                callbacks: {
+                                    label: function(tooltipItem) {
+                                        var value = tooltipItem.raw;
+                                        return tooltipItem.label + ': ' + new Intl.NumberFormat('id-ID', {
+                                            style: 'decimal',
+                                            minimumFractionDigits: 2
+                                        }).format(value) + ' Kg';
+                                    }
                                 }
                             }
                         }
                     }
+                });
+            }
+
+            createDonutChart(dataMasuk); // Default: Sampah Masuk
+
+            const donutChartTypeSelect = document.getElementById('donutChartType');
+            donutChartTypeSelect.addEventListener('change', function() {
+                const selectedDonutChartType = donutChartTypeSelect.value;
+                let data;
+                if (selectedDonutChartType === 'masuk') {
+                    data = dataMasuk;
+                } else if (selectedDonutChartType === 'terjual') {
+                    data = dataTerjual;
                 }
+                createDonutChart(data);
             });
 
-            chartTypeSelect.addEventListener('change', function() {
-                if (this.value === 'masuk') {
-                    donutChart.data.labels = Object.keys(dataMasuk);
-                    donutChart.data.datasets[0].data = Object.values(dataMasuk);
-                } else {
-                    donutChart.data.labels = Object.keys(dataTerjual);
-                    donutChart.data.datasets[0].data = Object.values(dataTerjual);
+            // Event listener untuk reset chart jika membutuhkan
+            window.addEventListener('resize', function() {
+                if (donutChart) {
+                    donutChart.resize();
                 }
-                donutChart.update();
             });
         });
     </script>
