@@ -10,7 +10,7 @@
                             <!-- Tambahkan teks di sini -->
                             <div class="text-center mb-1">
                                 <h4 class="h4 font-weight-bold" style="font-family: 'Courier New', Courier, monospace; color: #326893;">
-                                    SISTEM PENCATATAN SAMPAH<br><span style="font-size: 1.2em;">GO-SARI</span>
+                                    SISTEM INFORMASI PENCATATAN SAMPAH<br><span style="font-size: 1.2em;">GO-SARI</span>
                                 </h4>
                             </div>
                             <img src="<?= base_url('assets/img/logo.png'); ?>" class="img-fluid mx-auto d-block" alt="Logo" style="max-width: 80%; height: auto;">

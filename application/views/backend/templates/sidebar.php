@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar style=" position: fixed; height: 100%; overflow-y: auto;"">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center my-3" href="Home">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center my-3" href="<?= base_url('Home'); ?>">
         <div class="sidebar-brand-icon rotate-n">
             <img src="<?= base_url('assets/img/logo.png'); ?>" class="img-fluid mx-auto d-block p-1" alt="Logo" style="max-width: 100%; height: auto;">
         </div>

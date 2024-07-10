@@ -132,7 +132,7 @@
                 <div class="col-xl-12 mb-4">
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Pie Chart Sampah Masuk dan Terjual</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Pie Chart Sampah Berdasarkan Kategori</h6>
                             <div>
                                 <select id="donutChartType" class="form-control">
                                     <option value="masuk">Sampah Masuk</option>
@@ -357,7 +357,9 @@
                             drawBorder: false
                         },
                         ticks: {
-                            maxTicksLimit: 6
+                            autoSkip: false, // Pastikan semua label ditampilkan
+                            maxRotation: 90,
+                            minRotation: 45,
                         }
                     },
                     y: {
@@ -405,6 +407,7 @@
             }
         });
 
+
         // Pie Chart
         var ctxPie = document.getElementById('myPieChart').getContext('2d');
         var myPieChart = new Chart(ctxPie, {
@@ -440,7 +443,7 @@
             }
         });
 
-        //h
+        //Pie Chart Sampah Masuk dan Terjual
         document.addEventListener('DOMContentLoaded', function() {
             const donutChartCtx = document.getElementById('myDonutChart').getContext('2d');
             let donutChart;
