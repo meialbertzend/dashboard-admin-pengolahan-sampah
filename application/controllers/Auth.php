@@ -60,6 +60,6 @@ class Auth extends CI_Controller
     {
         // Data session akan dihancurkan
         $this->session->sess_destroy();
-        redirect('Auth', 'refresh');
+        redirect('Landing', 'refresh');
     }
 }
