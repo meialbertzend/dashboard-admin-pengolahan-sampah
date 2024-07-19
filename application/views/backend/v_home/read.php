@@ -103,7 +103,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Sampah Masuk dan Terjual</h6>
                     <div>
                         <select id="chartType" class="form-select">
-                            <option value="area">Area Chart</option>
+                            <option value="area">Line Chart</option>
                             <option value="bar">Bar Chart</option>
                         </select>
                     </div>
