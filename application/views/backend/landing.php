@@ -201,7 +201,7 @@
                         <div class="content">
                             <h2>TPS GO-SARI</h2>
                             <p>
-                                TPS 3R Go-sari adalah salah satu unit usaha Badan usaha milik Kalurahan Guwosari yang bergerak di bidang pengelolaan sampah, GO-SARI berdiri sejah November 2019. TPS GO-SARI terletak di Kalurahan Guwosari, Kapanewon Pajangan, Kabupaten Bantul. TPS GO-SARI berhasil melakukan pengolahan sampah hingga menghasilkan rupiah. GO-SARI mampu mengelola sampah secara mandiri dengan konsep zero waste atau pengelolaan dengan melakukan pemilahan, pengomposan, dan pengumpulan barang layak jual. Sekitar 1 ton sampah per hari bisa diolah menjadi berkah.
+                                TPS GO-SARI adalah salah satu unit usaha Badan usaha milik Kalurahan Guwosari yang bergerak di bidang pengelolaan sampah, GO-SARI berdiri sejah November 2019. TPS GO-SARI terletak di Kalurahan Guwosari, Kapanewon Pajangan, Kabupaten Bantul. TPS GO-SARI berhasil melakukan pengolahan sampah hingga menghasilkan rupiah. GO-SARI mampu mengelola sampah secara mandiri dengan konsep zero waste atau pengelolaan dengan melakukan pemilahan, pengomposan, dan pengumpulan barang layak jual. Sekitar 1 ton sampah per hari bisa diolah menjadi berkah.
                             </p>
 
                         </div>
@@ -225,7 +225,7 @@
             <!-- Section Title -->
             <div class="container section-title" data-aos="fade-up">
                 <h2>Statistics</h2>
-                <p>Statistik Sampah TPS-GOSARI<br></p>
+                <p>Statistik Sampah TPS GO-SARI<br></p>
             </div><!-- End Section Title -->
 
             <div class="container">
@@ -323,7 +323,7 @@
                         <div class="card">
                             <img src="assets/img/value1.png" class="img-fluid" alt="">
                             <h3>Nasabah baru mendapatkan edukasi tentang pilah sampah</h3>
-                            <p>Setiap nasabah baru akan diberikan pendidikan dan pelatihan mengenai cara memisahkan sampah dengan bena.</p>
+                            <p>Setiap nasabah baru akan diberikan pendidikan dan pelatihan mengenai cara memisahkan sampah dengan benar.</p>
                         </div>
                     </div><!-- End Card Item -->
 
