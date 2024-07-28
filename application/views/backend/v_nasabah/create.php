@@ -9,6 +9,11 @@
 
         <form method="post" class="mx-5 my-3">
             <div class="form-group">
+                <label for="id_nasabah">ID Nasabah :</label>
+                <input type="text" name="id_nasabah" class="form-control" id="id_nasabah" value="<?= isset($id_nasabah) ? $id_nasabah : ''; ?>">
+                <small class="form-text text-danger"><?= form_error('id_nasabah'); ?></small>
+            </div>
+            <div class="form-group">
                 <label for="nama_nasabah">Nama Lengkap :</label>
                 <input type="text" name="nama_nasabah" class="form-control" id="nama_nasabah" value="<?= isset($nama_nasabah) ? $nama_nasabah : ''; ?>">
                 <small class="form-text text-danger"><?= form_error('nama_nasabah'); ?></small>

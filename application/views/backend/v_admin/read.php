@@ -26,7 +26,7 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Username</th>
+                            <th>ID Admin</th>
                             <th>Nama</th>
                             <th>Password</th>
                             <th>Level Admin</th>

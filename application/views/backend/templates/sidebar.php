@@ -57,32 +57,60 @@
             <a class="nav-link" href="<?= base_url('Nasabah'); ?>">
                 <i class="fas fa-fw fa-users"></i>
                 <span>Data Nasabah</span></a>
+
         </li>
     <?php endif; ?>
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        KATEGORI
+    </div>
 
     <!-- Nav Item - Kategori Sampah (Hanya untuk Administrator) -->
-    <?php if ($this->session->userdata('level') == 'administrator') : ?>
+    <?php if ($this->session->userdata('level') == 'administrator' || $this->session->userdata('level') == 'admin') : ?>
         <li class="nav-item <?= $this->uri->segment(1) == 'Kategori' ? 'active' : ''; ?>">
             <a class="nav-link" href="<?= base_url('Kategori'); ?>">
                 <i class="fas fa-fw fa-layer-group"></i>
                 <span>Kategori Sampah</span></a>
         </li>
     <?php endif; ?>
+    <!-- Nav Item - Sub Kategori Sampah (Hanya untuk Administrator) -->
+    <?php if ($this->session->userdata('level') == 'administrator' || $this->session->userdata('level') == 'admin') : ?>
+        <li class="nav-item <?= $this->uri->segment(1) == 'Sub_kategori' ? 'active' : ''; ?>">
+            <a class="nav-link" href="<?= base_url('Sub_kategori'); ?>">
+                <i class="fas fa-fw fa-list"></i>
+                <span>Sub Kategori Sampah</span></a>
+        </li>
+    <?php endif; ?>
     <hr class="sidebar-divider">
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        DATA SAMPAH
+        TRANSAKSI
     </div>
     <!-- Nav Item - Sampah Masuk -->
     <?php if ($this->session->userdata('level') == 'administrator' || $this->session->userdata('level') == 'admin') : ?>
         <li class="nav-item <?= $this->uri->segment(1) == 'Sampah_masuk' ? 'active' : ''; ?>">
             <a class="nav-link" href="<?= base_url('Sampah_masuk'); ?>">
-                <i class="fas fa-fw fa-truck-moving"></i>
-                <span>Sampah Masuk</span></a>
+                <i class="fas fa-hand-holding-usd"></i>
+                <span>Transaksi Setor</span></a>
         </li>
     <?php endif; ?>
 
+
+    <!-- Nav Item - Transaksi Tarik -->
+    <?php if ($this->session->userdata('level') == 'administrator' || $this->session->userdata('level') == 'admin') : ?>
+        <li class="nav-item <?= $this->uri->segment(1) == 'Transaksi_tarik' ? 'active' : ''; ?>">
+            <a class="nav-link" href="<?= base_url('Transaksi_tarik'); ?>">
+                <i class="fas fa-money-bill-wave-alt"></i>
+                <span>Transaksi Tarik</span></a>
+        </li>
+    <?php endif; ?>
+    <hr class="sidebar-divider">
+
+    <div class="sidebar-heading">
+        PENJUALAN
+    </div>
     <!-- Nav Item - Sampah Terjual -->
     <?php if ($this->session->userdata('level') == 'administrator' || $this->session->userdata('level') == 'admin') : ?>
         <li class="nav-item <?= $this->uri->segment(1) == 'Sampah_terjual' ? 'active' : ''; ?>">

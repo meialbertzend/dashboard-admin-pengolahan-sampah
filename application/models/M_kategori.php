@@ -5,7 +5,7 @@ class M_kategori extends CI_Model
     private $table = 'kategori_sampah';
     private $pk = 'id_kategori';
 
-    public function GetAllKategori()
+    public function GetAllKategori() // Ubah di sini
     {
         return $this->db->get($this->table)->result_array();
     }
@@ -42,7 +42,8 @@ class M_kategori extends CI_Model
         $this->db->update($this->table, $data);
     }
 
-    public function get_kategori_count(){
+    public function get_kategori_count()
+    {
         $this->db->from('kategori_sampah');
         return $this->db->count_all_results();
     }

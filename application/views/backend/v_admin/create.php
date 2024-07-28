@@ -10,7 +10,7 @@
         <form method="post" class="mx-5 my-3">
 
             <div class="form-group">
-                <label for="id_admin">Username :</label>
+                <label for="id_admin">ID Admin :</label>
                 <input type="text" name="id_admin" class="form-control" id="id_admin" value="<?= isset($id_admin) ? $id_admin : ''; ?>">
                 <small class="form-text text-danger"><?= form_error('id_admin'); ?></small>
             </div>

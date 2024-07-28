@@ -30,7 +30,9 @@
                         <thead>
                             <tr>
                                 <th>No</th>
+                                <th>ID Nasabah</th>
                                 <th>Nama Lengkap</th>
+                                <th>Saldo</th>
                                 <th>No HP</th>
                                 <th>Alamat</th>
                                 <th>Aksi</th>
@@ -41,7 +43,9 @@
                             foreach ($nasabah as $nasabah) :  ?>
                                 <tr>
                                     <td><?php echo $no ?></td>
+                                    <td><?= $nasabah['id_nasabah'] ?></td>
                                     <td><?= $nasabah['nama_nasabah'] ?></td>
+                                    <td><?= "Rp. " . number_format($nasabah['saldo'], 2, ",", ".") ?></td>
                                     <td><?= $nasabah['no_hp'] ?></td>
                                     <td><?= $nasabah['alamat'] ?></td>
                                     <td class="my-5">

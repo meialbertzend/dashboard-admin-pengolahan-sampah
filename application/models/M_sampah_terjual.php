@@ -25,7 +25,7 @@ class M_sampah_terjual extends CI_Model
 
     public function create($data)
     {
-        $this->db->insert('sampah_terjual', $data);
+        return $this->db->insert('sampah_terjual', $data);
     }
 
     public function getSampahTerjualById($id_sampah_terjual)

@@ -67,7 +67,7 @@
                 <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
             </nav>
 
-            <a class="btn-getstarted flex-md-shrink-0" href="<?= base_url('Auth'); ?>">Login Admin</a>
+            <a class="btn-getstarted flex-md-shrink-0" href="<?= base_url('Auth'); ?>">Login</a>
 
         </div>
     </header>

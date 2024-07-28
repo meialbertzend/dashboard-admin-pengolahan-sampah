@@ -9,14 +9,13 @@ class Kategori extends CI_Controller
         $this->load->model('M_kategori');
         $this->load->library('form_validation');
         IsLoggedIn(); // Cek apakah pengguna sudah login
-        IsAdmin();
     }
 
     public function index()
     {
         // Tangkap data
         $data['title'] = 'Kategori Sampah';
-        $data['kategori'] = $this->M_kategori->GetAllKategori();
+        $data['kategori'] = $this->M_kategori->get_all_kategori();
         $data['namaAdmin'] = $this->db->get_where('admin', ['id_admin' => $this->session->userdata('id_admin')])->row_array();
 
         $this->load->view('backend/templates/header', $data);

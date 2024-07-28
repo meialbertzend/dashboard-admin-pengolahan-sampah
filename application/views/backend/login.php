@@ -30,7 +30,7 @@
                                 <?php endif; ?>
                                 <form method="post" action="<?php echo site_url('auth/login') ?>">
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user" name="id_admin" placeholder="Username...">
+                                        <input type="text" class="form-control form-control-user" name="id_admin" placeholder="Nomor ID">
                                     </div>
                                     <div class="form-group">
                                         <input type="password" class="form-control form-control-user" name="pswd_admin" placeholder="Password">
