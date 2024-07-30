@@ -10,7 +10,7 @@
         <form method="post" action="<?= site_url('nasabah/edit/' . $nasabah['id_nasabah']); ?>" class="mx-5 my-3">
             <div class="form-group">
                 <label for="id_nasabah">ID Nasabah :</label>
-                <input type="text" name="id_nasabah" class="form-control" id="id_nasabah" value="<?= isset($nasabah['id_nasabah']) ? $nasabah['id_nasabah'] : ''; ?>">
+                <input type="text" name="id_nasabah" class="form-control" id="id_nasabah" value="<?= isset($nasabah['id_nasabah']) ? $nasabah['id_nasabah'] : ''; ?>" pattern="\S+" title="Spasi tidak diperbolehkan">
                 <small class="form-text text-danger"><?= form_error('id_nasabah'); ?></small>
             </div>
             <div class="form-group">
@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label for="no_hp">No HP :</label>
-                <input type="text" name="no_hp" class="form-control" id="no_hp" value="<?= isset($nasabah['no_hp']) ? $nasabah['no_hp'] : ''; ?>">
+                <input type="number" name="no_hp" class="form-control" id="no_hp" value="<?= isset($nasabah['no_hp']) ? $nasabah['no_hp'] : ''; ?>">
                 <small class="form-text text-danger"><?= form_error('no_hp'); ?></small>
             </div>
             <div class="form-group">

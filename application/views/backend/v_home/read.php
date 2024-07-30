@@ -36,7 +36,7 @@
                             <div class="text-xs font-weight-bold text-custom text-uppercase mb-1">
                                 SAMPAH MASUK
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= number_format($sampah_masuk_count, 2, ",", ".") ?> Kg</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= number_format($sampah_masuk_count ?? 0, 2, ",", ".") ?> Kg</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fw fa-truck-moving fa-2x text-gray-300"></i>
@@ -45,7 +45,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Sampah Terjual Count Card -->
         <div class="col-xl-3 col-md-6 mb-4">
@@ -56,9 +55,7 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 SAMPAH TERJUAL
                             </div>
-
-                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= number_format($sampah_terjual_count, 2, ",", ".") ?> Kg
-                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?= number_format($sampah_terjual_count ?? 0, 2, ",", ".") ?> Kg</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fw fa-shopping-cart fa-2x text-gray-300"></i>
@@ -67,6 +64,7 @@
                 </div>
             </div>
         </div>
+
 
         <!-- Total Pendapatan Dari Jual Sampah -->
         <div class="col-xl-3 col-md-6 mb-4">

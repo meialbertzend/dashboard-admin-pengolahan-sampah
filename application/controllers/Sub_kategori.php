@@ -32,7 +32,7 @@ class Sub_kategori extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = 'Tambah Sub Kategori';
-            $data['kategori'] = $this->M_kategori->get_all_kategori();
+            $data['kategori'] = $this->M_kategori->GetAllKategori();
             $this->load->view('backend/templates/header', $data);
             $this->load->view('backend/templates/sidebar', $data);
             $this->load->view('backend/templates/topbar', $data);
@@ -67,7 +67,7 @@ class Sub_kategori extends CI_Controller
 
         if ($this->form_validation->run() == FALSE) {
             $data['title'] = 'Edit Sub Kategori';
-            $data['kategori'] = $this->M_kategori->get_all_kategori();
+            $data['kategori'] = $this->M_kategori->GetAllKategori();
             $this->load->view('backend/templates/header', $data);
             $this->load->view('backend/templates/sidebar', $data);
             $this->load->view('backend/templates/topbar', $data);

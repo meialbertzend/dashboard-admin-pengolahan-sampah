@@ -98,53 +98,53 @@ class Transaksi_tarik extends CI_Controller
 
 
 
-    public function edit($id_tarik)
-    {
-        $data['title'] = 'Edit Transaksi Tarik';
-        $data['tarik'] = $this->M_tarik->getById($id_tarik); // Pastikan getById() ada di model M_tarik
-        $data['nasabah'] = $this->M_nasabah->GetAllNasabah(); // Pastikan GetAllNasabah() ada di model M_nasabah
-        $data['namaAdmin'] = $this->db->get_where('admin', ['id_admin' => $this->session->userdata('id_admin')])->row_array();
+    // public function edit($id_tarik)
+    // {
+    //     $data['title'] = 'Edit Transaksi Tarik';
+    //     $data['tarik'] = $this->M_tarik->getById($id_tarik); // Pastikan getById() ada di model M_tarik
+    //     $data['nasabah'] = $this->M_nasabah->GetAllNasabah(); // Pastikan GetAllNasabah() ada di model M_nasabah
+    //     $data['namaAdmin'] = $this->db->get_where('admin', ['id_admin' => $this->session->userdata('id_admin')])->row_array();
 
-        $this->form_validation->set_rules('tgl_tarik', 'Tanggal Tarik', 'required');
-        $this->form_validation->set_rules('id_nasabah', 'ID Nasabah', 'required');
-        $this->form_validation->set_rules('jumlah_tarik', 'Jumlah Tarik', 'required|numeric');
+    //     $this->form_validation->set_rules('tgl_tarik', 'Tanggal Tarik', 'required');
+    //     $this->form_validation->set_rules('id_nasabah', 'ID Nasabah', 'required');
+    //     $this->form_validation->set_rules('jumlah_tarik', 'Jumlah Tarik', 'required|numeric');
 
-        if ($this->form_validation->run() == FALSE) {
-            $this->load->view('backend/templates/header', $data);
-            $this->load->view('backend/templates/sidebar', $data);
-            $this->load->view('backend/templates/topbar', $data);
-            $this->load->view('backend/v_tarik/edit', $data); // Pastikan file ini ada
-            $this->load->view('backend/templates/footer');
-        } else {
-            $id_nasabah = $this->input->post('id_nasabah');
-            $jumlah_tarik = $this->input->post('jumlah_tarik');
+    //     if ($this->form_validation->run() == FALSE) {
+    //         $this->load->view('backend/templates/header', $data);
+    //         $this->load->view('backend/templates/sidebar', $data);
+    //         $this->load->view('backend/templates/topbar', $data);
+    //         $this->load->view('backend/v_tarik/edit', $data); // Pastikan file ini ada
+    //         $this->load->view('backend/templates/footer');
+    //     } else {
+    //         $id_nasabah = $this->input->post('id_nasabah');
+    //         $jumlah_tarik = $this->input->post('jumlah_tarik');
 
-            // Mendapatkan saldo awal dari nasabah
-            $tarik = $this->M_tarik->getById($id_tarik);
-            $saldo_awal = $tarik['saldo_awal'];
-            $saldo_akhir = $saldo_awal - $jumlah_tarik;
+    //         // Mendapatkan saldo awal dari nasabah
+    //         $tarik = $this->M_tarik->getById($id_tarik);
+    //         $saldo_awal = $tarik['saldo_awal'];
+    //         $saldo_akhir = $saldo_awal - $jumlah_tarik;
 
-            if ($saldo_akhir < 0) {
-                $this->session->set_flashdata('flash', 'Saldo tidak mencukupi');
-                redirect('transaksi_tarik/edit/' . $id_tarik);
-            }
+    //         if ($saldo_akhir < 0) {
+    //             $this->session->set_flashdata('flash', 'Saldo tidak mencukupi');
+    //             redirect('transaksi_tarik/edit/' . $id_tarik);
+    //         }
 
-            $tarikData = [
-                'tgl_tarik' => $this->input->post('tgl_tarik'),
-                'id_nasabah' => $id_nasabah,
-                'saldo_awal' => $saldo_awal,
-                'jumlah_tarik' => $jumlah_tarik,
-                'saldo_akhir' => $saldo_akhir,
-                'id_admin' => $this->session->userdata('id_admin')
-            ];
+    //         $tarikData = [
+    //             'tgl_tarik' => $this->input->post('tgl_tarik'),
+    //             'id_nasabah' => $id_nasabah,
+    //             'saldo_awal' => $saldo_awal,
+    //             'jumlah_tarik' => $jumlah_tarik,
+    //             'saldo_akhir' => $saldo_akhir,
+    //             'id_admin' => $this->session->userdata('id_admin')
+    //         ];
 
-            $this->M_tarik->update($id_tarik, $tarikData); // Pastikan update() ada di model M_tarik
-            $this->M_nasabah->updateSaldo($id_nasabah, $saldo_akhir); // Pastikan updateSaldo() ada di model M_nasabah
+    //         $this->M_tarik->update($id_tarik, $tarikData); // Pastikan update() ada di model M_tarik
+    //         $this->M_nasabah->updateSaldo($id_nasabah, $saldo_akhir); // Pastikan updateSaldo() ada di model M_nasabah
 
-            $this->session->set_flashdata('flash', 'Diubah');
-            redirect('transaksi_tarik');
-        }
-    }
+    //         $this->session->set_flashdata('flash', 'Diubah');
+    //         redirect('transaksi_tarik');
+    //     }
+    // }
 
 
     public function delete($id_tarik)

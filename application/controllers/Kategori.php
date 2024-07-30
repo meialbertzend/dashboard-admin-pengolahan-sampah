@@ -15,7 +15,7 @@ class Kategori extends CI_Controller
     {
         // Tangkap data
         $data['title'] = 'Kategori Sampah';
-        $data['kategori'] = $this->M_kategori->get_all_kategori();
+        $data['kategori'] = $this->M_kategori->GetAllKategori();
         $data['namaAdmin'] = $this->db->get_where('admin', ['id_admin' => $this->session->userdata('id_admin')])->row_array();
 
         $this->load->view('backend/templates/header', $data);

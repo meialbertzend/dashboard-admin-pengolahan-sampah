@@ -1,13 +1,13 @@
 <!-- Begin Page Content -->
-<div class="container-fluid">
+<!-- <div class="container-fluid"> -->
 
-    <!-- Page Heading -->
-    <h1 class="h3 my-3 text-gray-800">
+<!-- Page Heading -->
+<!-- <h1 class="h3 my-3 text-gray-800">
         <i class="fas fa-fw fa-hand-holding-usd mx-3"></i><?= $title; ?>
-    </h1>
+    </h1> -->
 
-    <!-- Edit Form -->
-    <div class="card shadow mb-4 col-lg-6">
+<!-- Edit Form -->
+<!-- <div class="card shadow mb-4 col-lg-6">
         <form method="post" class="mx-5 my-3">
             <div class="form-group">
                 <label for="nama_nasabah">Nasabah :</label>
@@ -65,10 +65,10 @@
         </form>
     </div>
 
-</div>
+</div> -->
 <!-- End of Main Content -->
 
-<script>
+<!-- <script>
     document.addEventListener('DOMContentLoaded', function() {
         const kategoriSelect = document.getElementById('nama_kategori');
         const subkategoriSelect = document.getElementById('subkategori');
@@ -116,4 +116,4 @@
             calculateHarga();
         }
     });
-</script>
+</script> -->

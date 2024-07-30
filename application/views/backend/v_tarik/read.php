@@ -50,7 +50,7 @@
                                 <td><?= "Rp. " . number_format($t['saldo_akhir'], 2, ",", ".") ?></td>
                                 <td><?= $t['nama_admin'] ?></td>
                                 <td>
-                                    <a class="btn btn-success" href="<?= site_url('transaksi_tarik/edit/') . $t['id_tarik'] ?>"><i class="fas fa-edit"></i></a>
+                                    <!-- <a class="btn btn-success" href="<?= site_url('transaksi_tarik/edit/') . $t['id_tarik'] ?>"><i class="fas fa-edit"></i></a> -->
                                     <a class="btn btn-danger" href="<?= site_url('transaksi_tarik/delete/') . $t['id_tarik'] ?>" onclick="return confirm('Yakin Ingin Hapus?');"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>

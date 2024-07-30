@@ -1,11 +1,11 @@
-<!-- Begin Page Content -->
-<div class="container-fluid">
+Begin Page Content
+<!-- <div class="container-fluid"> -->
 
-    <!-- Page Heading -->
-    <h1 class="h3 my-3 text-gray-800"><i class="fas fa-money-bill-wave-alt mx-3"></i><?= $title; ?></h1>
+<!-- Page Heading -->
+<!-- <h1 class="h3 my-3 text-gray-800"><i class="fas fa-money-bill-wave-alt mx-3"></i><?= $title; ?></h1> -->
 
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4 col-lg-8">
+<!-- DataTales Example -->
+<!-- <div class="card shadow mb-4 col-lg-8">
         <div class="card-header py-3">
             <h6 class="m-0 font-weight-bold text-primary">Edit Transaksi Tarik</h6>
         </div>
@@ -48,10 +48,10 @@
             </form>
         </div>
     </div>
-</div>
-<!-- End of Main Content -->
+</div> -->
+End of Main Content
 
-<script>
+<!-- <script>
     function updateSaldoAwal() {
         var nasabahSelect = document.getElementById("id_nasabah");
         var selectedOption = nasabahSelect.options[nasabahSelect.selectedIndex];
@@ -66,4 +66,4 @@
         var saldoAkhir = saldoAwal - jumlahTarik;
         document.getElementById("saldo_akhir").value = saldoAkhir;
     }
-</script>
+</script> -->

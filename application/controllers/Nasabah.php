@@ -31,7 +31,7 @@ class Nasabah extends CI_Controller
 
         $this->form_validation->set_rules('id_nasabah', 'ID Nasabah', 'required');
         $this->form_validation->set_rules('nama_nasabah', 'Nama Nasabah', 'required');
-        $this->form_validation->set_rules('no_hp', 'Nomor HP', 'required');
+        $this->form_validation->set_rules('no_hp', 'Nomor HP', 'required|numeric');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
         if ($this->form_validation->run() == FALSE) {
@@ -57,7 +57,7 @@ class Nasabah extends CI_Controller
         $this->form_validation->set_rules('id_nasabah', 'ID Nasabah', 'required');
         $this->form_validation->set_rules('nama_nasabah', 'Nama Nasabah', 'required');
         $this->form_validation->set_rules('saldo', 'Saldo', 'required');
-        $this->form_validation->set_rules('no_hp', 'Nomor HP', 'required');
+        $this->form_validation->set_rules('no_hp', 'Nomor HP', 'required|numeric');
         $this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
         if ($this->form_validation->run() == FALSE) {
@@ -69,6 +69,7 @@ class Nasabah extends CI_Controller
             $this->load->view('backend/templates/footer');
         } else {
             $nasabahData = array(
+                'id_nasabah' => $this->input->post('id_nasabah'),
                 'nama_nasabah' => $this->input->post('nama_nasabah'),
                 'saldo' => $this->input->post('saldo'),
                 'no_hp' => $this->input->post('no_hp'),

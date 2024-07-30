@@ -53,7 +53,7 @@
                                 <td><?= number_format($row['berat'], 2, ",", ".") . " Kg"; ?></td>
                                 <td><?= "Rp " . number_format($row['harga'], 2, ",", "."); ?></td>
                                 <td>
-                                    <a class="btn btn-success" href="<?= site_url('sampah_masuk/edit/' . $row['id_sampah_masuk']); ?>"><i class="fas fa-edit"></i></a>
+                                    <!-- <a class="btn btn-success" href="<?= site_url('sampah_masuk/edit/' . $row['id_sampah_masuk']); ?>"><i class="fas fa-edit"></i></a> -->
                                     <a type="button" class="btn btn-danger" onclick="return confirm('Yakin ingin hapus?');" href="<?= site_url('sampah_masuk/delete/' . $row['id_sampah_masuk']); ?>"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
